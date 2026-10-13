@@ -3,6 +3,7 @@ name: pull-request
 on:
   pull_request:
     branches:
+      - dev
       - main
     types:
       - opened
@@ -11,6 +12,20 @@ on:
       - ready_for_review
 
 jobs:
+  version-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate version bump
+        uses: ./.github/actions/version-check
+        with:
+          base-ref: ${{ github.base_ref }}
+
   test:
     runs-on: ubuntu-latest
 
