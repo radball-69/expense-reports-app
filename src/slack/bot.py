@@ -67,9 +67,7 @@ def build_app(settings: SlackSettings) -> App:
         ack()
         command_text = str(command.get("text", "")).strip()
         if command_text:
-            respond(
-                f'Expense command received: "{command_text}". '
-            )
+            respond(f'Expense command received: "{command_text}". ')
             return
         respond(
             "Expense command received. Stub mode is active; "

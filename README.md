@@ -18,3 +18,4 @@ Scripts create `.venv` and install dependencies automatically when needed.
 - `./run.sh` — start app
 - `./run-tests.sh` — run tests
 - `./run-format-check.sh` — run lint/format checks
+- `./run-format.sh` — auto-fix lint/format issues
