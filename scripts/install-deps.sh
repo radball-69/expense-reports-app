@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 VENV_DIR="${REPO_ROOT}/.venv"
 VENV_PYTHON="${VENV_DIR}/bin/python"
 
@@ -23,5 +23,5 @@ fi
 if ! "${VENV_PYTHON}" -c "import pytest,ruff,black,slack_bolt" >/dev/null 2>&1; then
   echo "Installing project dependencies..."
   "${VENV_PYTHON}" -m pip install --upgrade pip
-  "${VENV_PYTHON}" -m pip install -e ".[dev]"
+  "${VENV_PYTHON}" -m pip install -e "${REPO_ROOT}[dev]"
 fi

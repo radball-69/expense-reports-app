@@ -3,15 +3,16 @@
 set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-VENV_PYTHON="${REPO_ROOT}/.venv/bin/python"
+SCRIPT="${REPO_ROOT}/scripts/${1:-}.sh"
 
-"${REPO_ROOT}/install-deps.sh"
-
-if [[ -f "${REPO_ROOT}/.env" ]]; then
-  set -a
-  # shellcheck source=/dev/null
-  source "${REPO_ROOT}/.env"
-  set +a
+if [[ -z "${1:-}" || ! -x "${SCRIPT}" ]]; then
+  echo "Usage: ./run.sh <script> [args...]" >&2
+  echo "Available scripts:" >&2
+  for f in "${REPO_ROOT}"/scripts/*.sh; do
+    basename "${f}" .sh >&2
+  done
+  exit 1
 fi
 
-"${VENV_PYTHON}" "${REPO_ROOT}/src/main.py"
+shift
+exec "${SCRIPT}" "$@"
