@@ -39,10 +39,10 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies
-        run: ./install-deps.sh
+        run: ./run.sh install-deps
 
       - name: Run tests
-        run: ./run-tests.sh
+        run: ./run.sh tests
 
   format-check:
     runs-on: ubuntu-latest
@@ -57,7 +57,7 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies
-        run: ./install-deps.sh
+        run: ./run.sh install-deps
 
       - name: Run format and lint checks
-        run: ./run-format-check.sh
+        run: ./run.sh format-check

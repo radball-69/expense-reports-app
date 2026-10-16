@@ -6,16 +6,18 @@ Slack bot that accepts receipts and descriptions to automatically fill out expen
 
 ```bash
 cp .env.example .env
-./run.sh
+./run.sh it
 ```
 
 Scripts create `.venv` and install dependencies automatically when needed.
-`run.sh` starts the Slack bot in Socket Mode and requires valid Slack env vars in `.env`.
+`./run.sh it` starts the Slack bot in Socket Mode and requires valid Slack env vars in `.env`.
 
 ## Scripts
 
-- `./install-deps.sh` — create/update local Python environment
-- `./run.sh` — start app
-- `./run-tests.sh` — run tests
-- `./run-format-check.sh` — run lint/format checks
-- `./run-format.sh` — auto-fix lint/format issues
+- `./run.sh install-deps` — create/update local Python environment
+- `./run.sh it` — start app
+- `./run.sh tests` — run tests
+- `./run.sh format-check` — run lint/format checks
+- `./run.sh format` — auto-fix lint/format issues
+
+Each command maps to `scripts/<name>.sh`.
