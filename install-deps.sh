@@ -20,7 +20,7 @@ if [[ ! -x "${VENV_PYTHON}" ]]; then
   "${SYSTEM_PYTHON}" -m venv "${VENV_DIR}"
 fi
 
-if ! "${VENV_PYTHON}" -c "import pytest,ruff,black" >/dev/null 2>&1; then
+if ! "${VENV_PYTHON}" -c "import pytest,ruff,black,slack_bolt" >/dev/null 2>&1; then
   echo "Installing project dependencies..."
   "${VENV_PYTHON}" -m pip install --upgrade pip
   "${VENV_PYTHON}" -m pip install -e ".[dev]"

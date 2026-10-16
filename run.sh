@@ -7,4 +7,11 @@ VENV_PYTHON="${REPO_ROOT}/.venv/bin/python"
 
 "${REPO_ROOT}/install-deps.sh"
 
+if [[ -f "${REPO_ROOT}/.env" ]]; then
+  set -a
+  # shellcheck source=/dev/null
+  source "${REPO_ROOT}/.env"
+  set +a
+fi
+
 "${VENV_PYTHON}" "${REPO_ROOT}/src/main.py"
